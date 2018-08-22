@@ -1,6 +1,1 @@
-*.md linguist-language=Shell
-*.podspec linguist-language=Shell
-*.sh linguist-language=Shell
-*.js linguist-language=Shell
-*.css linguist-language=Shell
-*.html linguist-language=Shell
+*.* linguist-language=Shell
