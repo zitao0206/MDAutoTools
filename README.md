@@ -74,12 +74,12 @@ For more information, see https://blog.cocoapods.org and the CHANGELOG for this 
 
 
 --------------------------------------------------------------------------------
- 🎉  Congrats
+    Congrats
 
- 🚀  MDEasyCache (1.0.11) successfully published
- 📅  August 21st, 20:09
- 🌎  https://cocoapods.org/pods/MDEasyCache
- 👍  Tell your friends!
+    MDEasyCache (1.0.11) successfully published
+    August 21st, 20:09
+    https://cocoapods.org/pods/MDEasyCache
+    Tell your friends!
 --------------------------------------------------------------------------------
 --------End--------
 ➜  MDEasyCache git:(master) 
