@@ -12,12 +12,11 @@ result=$(git tag --list)
 echo "当前tag list:"$result
 
 if [ "$result" = "" ]; then
-    echo "当前tag为空，默认置为0.0.0"
-    latestVersion= 0.0.0
+    echo "\e[46当前tag为空，默认置为0.0.0"
     git tag 0.0.0
     git push -v origin refs/tags/0.0.0
     sleep 3
-    echo "自动发版到MDSpecs"
+    echo "\e[46自动发版到MDSpecs"
     ./publishHelper.sh
 else
     OLD_IFS="$IFS"
@@ -42,10 +41,10 @@ else
             latestTag=${arr1[0]}.${arr1[1]}.$latestChar
         fi
     done;
-    echo "自动+1升级tag为："$latestVersion
+    echo "\e[46自动+1升级tag为："$latestVersion
     git tag $latestVersion
     git push -v origin refs/tags/$latestVersion
-    echo "自动发版到MDSpecs"
+    echo "\e[46自动发版到MDSpecs"
        ./publishHelper.sh
 fi
 
