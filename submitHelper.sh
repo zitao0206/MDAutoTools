@@ -7,34 +7,35 @@ git commit -am "自动化代码提交"
 git push origin master
 
 git fetch
-result=$(git tag --list)
+
+if [ $result ]; then
+
+allTags=$(git tag --list)
 
 OLD_IFS="$IFS"
+allTagsArr=($allTags)
+IFS="$OLD_IFS"
+
+result=`git describe --abbrev=0 --tags 2>/dev/null`
+
+OLD_IFS="$IFS"
+IFS="."
 arr=($result)
 IFS="$OLD_IFS"
 
-lastTag=${arr[${#arr[*]}-1]}
 
-OLD_IFS=$IFS
-IFS='.'
-arr1=($lastTag)
-IFS=$OLD_IFS
-
-lastchar=${arr1[${#arr1[*]}-1]}
-
+lastchar=${arr[${#arr[@]}-1]}
 latestChar=$[$lastchar+1]
-echo $latestChar
-latestTag=${arr1[0]}.${arr1[1]}.$latestChar
-for((k=0;k<100;k++)) do
-    if [[ "${arr[@]}" =~ $latestTag ]];then
+
+newTag=${arr[0]}.${arr[1]}.$latestChar
+
+for((k=0;k<200;k++)) do
+    if [[ "${allTagsArr[@]}" =~ $newTag ]];then
         latestChar=$[$latestChar+1]
-        latestTag=${arr1[0]}.${arr1[1]}.$latestChar
+        newTag=${arr[0]}.${arr[1]}.$latestChar
     fi
 done;
-echo "\e[46自动+1升级tag为："$latestVersion
-git tag $latestVersion
-git push -v origin refs/tags/$latestVersion
-echo "\e[46自动发版到MDSpecs"
- #   ./publishHelper.sh
 
-echo "--------End--------"
+echo "自动升级tag为："$newTag
+
+fi
