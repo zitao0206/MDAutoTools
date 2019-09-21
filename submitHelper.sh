@@ -10,9 +10,7 @@ git fetch
 
 allTags=$(git tag --list)
 
-if [ $allTags ]; then
-
-
+if [ "$allTags" != "" ]; then
 
 OLD_IFS="$IFS"
 allTagsArr=($allTags)
