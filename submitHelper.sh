@@ -11,12 +11,11 @@ result=$(git tag --list)
 
 echo "当前tag list:"$result
 
-latestVersion= 0.0.0
 if [ "$result" = "" ]; then
     echo "当前tag为空，默认置为0.0.0"
-    latestTag= 0.0.0
-    git tag $latestTag
-    git push -v origin refs/tags/$latestTag
+    latestVersion= 0.0.0
+    git tag $latestVersion
+    git push -v origin refs/tags/$latestVersion
     sleep 3
     echo "自动发版到MDSpecs"
     ./publishHelper.sh
