@@ -8,9 +8,11 @@ git push origin master
 
 git fetch
 
-if [ $result ]; then
-
 allTags=$(git tag --list)
+
+if [ $allTags ]; then
+
+
 
 OLD_IFS="$IFS"
 allTagsArr=($allTags)
