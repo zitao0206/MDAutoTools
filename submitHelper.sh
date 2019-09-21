@@ -11,7 +11,8 @@ result=$(git tag --list)
 
 echo "当前tag list:"$result
 
-if [! $result ]; then
+if [! -n $result ]; then
+    echo "当前tag为空，默认置为0.0.0"
     latestTag= '0.0.0'
 else
     OLD_IFS="$IFS"
